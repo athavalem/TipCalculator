@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     @IBAction func calculateTip(_ sender: Any) {
         let defaults = UserDefaults.standard
         
-        let defaultTipValue = defaults.integer(forKey: "DEFAULT_TIP_PERCENTAGE1111")
+        let defaultTipValue = defaults.integer(forKey: "DEFAULT_TIP_PERCENTAGE")
         let bill = Double(billField.text!) ?? 0
         let tip = bill * Double(defaultTipValue) / 100
         let total = bill + tip
