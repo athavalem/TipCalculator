@@ -15,8 +15,8 @@
 		DA25D2371E74C53D00B517BC /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA25D2361E74C53D00B517BC /* SettingsViewController.swift */; };
 		DA25D2391E7773F200B517BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA25D2381E7773F200B517BC /* Assets.xcassets */; };
 		DA25D23B1E77740100B517BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA25D23A1E77740100B517BC /* Assets.xcassets */; };
-		DA25D23E1E77745E00B517BC /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = DA25D23C1E77745E00B517BC /* apple.png */; };
-		DA25D23F1E77745E00B517BC /* swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA25D23D1E77745E00B517BC /* swift.jpg */; };
+		DA25D2451E7871B100B517BC /* apple.png in Resources */ = {isa = PBXBuildFile; fileRef = DA25D2441E7871B100B517BC /* apple.png */; };
+		DA25D2471E7871BD00B517BC /* swift.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DA25D2461E7871BD00B517BC /* swift.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		DA25D2361E74C53D00B517BC /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA25D2381E7773F200B517BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA25D23A1E77740100B517BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		DA25D23C1E77745E00B517BC /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = apple.png; path = ../../../Downloads/apple.png; sourceTree = "<group>"; };
-		DA25D23D1E77745E00B517BC /* swift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = swift.jpg; path = ../../../Downloads/swift.jpg; sourceTree = "<group>"; };
+		DA25D2441E7871B100B517BC /* apple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = apple.png; sourceTree = "<group>"; };
+		DA25D2461E7871BD00B517BC /* swift.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = swift.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,10 +67,10 @@
 				DA25D2241E735FD900B517BC /* AppDelegate.swift */,
 				DA25D2261E735FD900B517BC /* ViewController.swift */,
 				DA25D2281E735FD900B517BC /* Main.storyboard */,
+				DA25D2461E7871BD00B517BC /* swift.jpg */,
+				DA25D2441E7871B100B517BC /* apple.png */,
 				DA25D2361E74C53D00B517BC /* SettingsViewController.swift */,
 				DA25D22B1E735FD900B517BC /* Assets.xcassets */,
-				DA25D23C1E77745E00B517BC /* apple.png */,
-				DA25D23D1E77745E00B517BC /* swift.jpg */,
 				DA25D23A1E77740100B517BC /* Assets.xcassets */,
 				DA25D2381E7773F200B517BC /* Assets.xcassets */,
 				DA25D22D1E735FD900B517BC /* LaunchScreen.storyboard */,
@@ -143,8 +143,8 @@
 				DA25D22C1E735FD900B517BC /* Assets.xcassets in Resources */,
 				DA25D2391E7773F200B517BC /* Assets.xcassets in Resources */,
 				DA25D22A1E735FD900B517BC /* Main.storyboard in Resources */,
-				DA25D23F1E77745E00B517BC /* swift.jpg in Resources */,
-				DA25D23E1E77745E00B517BC /* apple.png in Resources */,
+				DA25D2471E7871BD00B517BC /* swift.jpg in Resources */,
+				DA25D2451E7871B100B517BC /* apple.png in Resources */,
 				DA25D23B1E77740100B517BC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
