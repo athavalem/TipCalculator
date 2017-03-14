@@ -27,9 +27,7 @@ Added Rest button to clear Bill amount and calculation done
 
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+[GIF Walkthru](tip.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
