@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var roundDown: UIButton!
     @IBOutlet weak var roundUp: UIButton!
     
+    @IBOutlet weak var imageView: UIImageView!
     var tip:Double = 0.00
     
     var bill:Double = 0.00
@@ -29,6 +30,7 @@ class ViewController: UIViewController {
     var locale:NSLocale? = nil
     var currencyFormater: NumberFormatter? = nil
     var currSymbol:String = "$"
+    var animationSwitch: Bool = false
     
     
     required init?(coder aDecoder: NSCoder) {
@@ -111,7 +113,31 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         billField.becomeFirstResponder()
-       
+
+        imageView.animationImages = [UIImage(named: "apple.png")!, UIImage(named: "swift.jpg")!]
+        imageView.animationDuration = 5.0
+        
+        imageView.startAnimating()
+        
+//        let image1 :UIImage = UIImage(named: "apple.png")!
+//        let image2 :UIImage = UIImage(named: "swift.jpg")!
+//        let frontimgview = UIImageView(image: image2)
+//        UIView.animate(withDuration: 5, animations: {
+//            // This causes first view to fade in and second view to fade out
+//           self.imageView.alpha = 0
+//            if self.animationSwitch{
+//                self.imageView.willRemoveSubview(frontimgview)
+//            }
+//            else{
+//                self.imageView.addSubview(frontimgview)
+//            }
+//           self.animationSwitch = !self.animationSwitch
+//           self.imageView.alpha = 1
+//    }
+//        )
+        
+        
+      
         
         
     }
