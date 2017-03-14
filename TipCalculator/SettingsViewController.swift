@@ -13,9 +13,11 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var selectedTipValue: UISlider!
     @IBOutlet weak var currentTipPercentage: UILabel!
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "Back"
+        
        
     }
     
@@ -24,9 +26,11 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.title = "Setup Default Tip"
-       
-       
-    }
+        let defaults = UserDefaults.standard
+        let tip:Float = Float( defaults.integer(forKey: "DEFAULT_TIP_PERCENTAGE"))
+        selectedTipValue.value = tip
+         currentTipPercentage.text = String (format: " %d %%",Int(round(tip)))
+}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
