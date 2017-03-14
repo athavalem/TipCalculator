@@ -34,15 +34,17 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
-        let selectedValue = Float(sender.value)
-        print(round(selectedValue))
-        
-        let defaults = UserDefaults.standard
+        let selectedValue:Int = Int(round(Float(sender.value)))
+        print(selectedValue)
+         currentTipPercentage.text = String (format: " %d %%",selectedValue)
+         let defaults = UserDefaults.standard
        
-        defaults.set(round(selectedValue), forKey: "DEFAULT_TIP_PERCENTAGE")
+        defaults.set(selectedValue, forKey: "DEFAULT_TIP_PERCENTAGE")
        
         defaults.synchronize()
         
+        
+       
     }
     
     /*
