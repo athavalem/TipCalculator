@@ -53,7 +53,10 @@ class ViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        print(" In viewWillAppear")
         super.viewWillAppear(animated)
+        
+        //Set up User Interface elements
         self.navigationController?.navigationBar.topItem?.title = "Tips"
         billField.layer.borderColor = UIColor.black.cgColor
         billField.layer.borderWidth = 1.0
@@ -61,33 +64,29 @@ class ViewController: UIViewController {
         billField.keyboardType = UIKeyboardType.decimalPad
         
         roundDown.backgroundColor = UIColor(red:0.16, green:0.48, blue:1.00, alpha:1.0)
-        //roundDown.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.0)
-        
         roundDown.setTitleColor(UIColor.white, for: UIControlState.normal)
         roundDown.layer.cornerRadius = 5
         roundDown.layer.borderWidth = 1
         roundDown.layer.borderColor = UIColor.black.cgColor
         
-        //roundUp.backgroundColor = UIColor.blue
-        //roundUp.titleLabel?.textColor = UIColor.white
+        
         roundUp.backgroundColor = UIColor(red:0.16, green:0.48, blue:1.00, alpha:1.0)
-        //roundDown.titleLabel?.textColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:0.0)
         roundUp.setTitleColor(UIColor.white, for: UIControlState.normal)
-
         roundDown.setTitleColor(UIColor.white, for: UIControlState.normal)
         roundUp.layer.cornerRadius = 5
         roundUp.layer.borderWidth = 1
         roundUp.layer.borderColor = UIColor.black.cgColor
         
        
-        
+        // Obtain data from Settings
         let defaults = UserDefaults.standard
         tipPercentage = defaults.integer(forKey: "DEFAULT_TIP_PERCENTAGE")
         
         currentValue.text = String (format: "(Current Tip %d %%)",tipPercentage)
+        print(tipPercentage)
         
+        checkForBillAmount()
         tipCalculation()
-
         
     }
     
@@ -100,6 +99,7 @@ class ViewController: UIViewController {
         
     }
     
+    //No longer needed
     func getCurSymbol () -> String{
     
         let locale = NSLocale.current
@@ -110,6 +110,8 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        
+        print ("In viewDidLoad")
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         billField.becomeFirstResponder()
@@ -119,27 +121,46 @@ class ViewController: UIViewController {
         
         imageView.startAnimating()
         
-//        let image1 :UIImage = UIImage(named: "apple.png")!
-//        let image2 :UIImage = UIImage(named: "swift.jpg")!
-//        let frontimgview = UIImageView(image: image2)
-//        UIView.animate(withDuration: 5, animations: {
-//            // This causes first view to fade in and second view to fade out
-//           self.imageView.alpha = 0
-//            if self.animationSwitch{
-//                self.imageView.willRemoveSubview(frontimgview)
-//            }
-//            else{
-//                self.imageView.addSubview(frontimgview)
-//            }
-//           self.animationSwitch = !self.animationSwitch
-//           self.imageView.alpha = 1
-//    }
-//        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(applicationDidBecomeActive(_:)),
+             name: NSNotification.Name.UIApplicationDidBecomeActive,
+            object: nil)
         
+    }
+    
+    func applicationDidBecomeActive(_ notification: NSNotification) {
+        // do something
         
-      
+         print ("In applicationDidBecomeActive")
+        checkForBillAmount()
+        tipCalculation()
+    }
+    
+    
+    func checkForBillAmount(){
         
+          print ("In checkForBillAmounts")
         
+        let defaults = UserDefaults.standard
+        let storedTime:Double = defaults.double(forKey: "STORED_TIME")
+        
+        let date = NSDate()
+        
+        let currentTime:Double = date.timeIntervalSince1970 * 1000.00
+        print (storedTime)
+        print(currentTime)
+        print(currentTime - storedTime)
+        if (currentTime > storedTime + 5.00 * 60.00 * 1000.00)
+        {
+            bill = 0.00
+            billField.text = ""
+        }
+        else{
+            bill = defaults.double(forKey: "STORED_BILL_AMOUNT")
+            billField.text = "\(bill)"
+        }
+
     }
    
     override func didReceiveMemoryWarning() {
@@ -189,15 +210,20 @@ class ViewController: UIViewController {
 
     }
     @IBAction func calculateTip(_ sender: Any) {
-//        let defaults = UserDefaults.standard
-//        
-//        let defaultTipValue = defaults.integer(forKey: "DEFAULT_TIP_PERCENTAGE")
-//        bill = Double(billField.text!) ?? 0
-//        tip = bill * Double(defaultTipValue) / 100
-//        total = bill + tip
-//        formatTipfields()
+
         
         bill = Double(billField.text!) ?? 0
+         let defaults = UserDefaults.standard
+        defaults.set(bill, forKey: "STORED_BILL_AMOUNT")
+        
+        
+        let date = NSDate()
+        
+        let currentTime:Double = date.timeIntervalSince1970 * 1000.00
+        
+        defaults.set(currentTime, forKey: "STORED_TIME")
+        
+        defaults.synchronize()
         tipCalculation()
        }
     
@@ -207,6 +233,18 @@ class ViewController: UIViewController {
        total = 0.00
         bill = 0.00
         tipRounding = 0.00
+        
+        let defaults = UserDefaults.standard
+        defaults.set(bill, forKey: "STORED_BILL_AMOUNT")
+        
+        let date = NSDate()
+        
+        let currentTime:Double = date.timeIntervalSince1970 * 1000.00
+        
+        defaults.set(currentTime, forKey: "STORED_TIME")
+        
+        defaults.synchronize()
+
         
         formatTipfields()
         billField.text = ""
